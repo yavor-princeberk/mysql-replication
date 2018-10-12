@@ -9,4 +9,5 @@ if [ $MYSQL_SLAVE ];
   then 
    cp /git-mysql/mysql-master.cnf /etc/mysql/my.cnf 
    rm -f /var/lib/mysql/ib* 
+   exec /git-mysq/insertUserIntoMaste.sh 
 fi 
