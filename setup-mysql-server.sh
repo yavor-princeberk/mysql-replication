@@ -7,6 +7,7 @@ if [ $MYSQL_MASTER ];
     cd /var/lib/mysql/mysql
     rm -f innodb_* slave_*
     /etc/init.d/mysql start 
+    mysql -u $MYSQL_MASTER_USER --password=MYSQL_MASTER_PASS mysql < /git-mysql/fixStatTables.sql
 fi
 if [ $MYSQL_SLAVE ]; 
   then 
@@ -15,4 +16,5 @@ if [ $MYSQL_SLAVE ];
    cd /var/lib/mysql/mysql
    rm -f innodb_* slave_*
    /etc/init.d/mysql start 
+   mysql -u $MYSQL_MASTER_USER --password=MYSQL_MASTER_PASS mysql < /git-mysql/fixStatTables.sql
 fi 
