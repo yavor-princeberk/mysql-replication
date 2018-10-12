@@ -5,7 +5,8 @@ if [ $MYSQL_MASTER ];
     cp /git-mysql/mysql-master.cnf /etc/mysql/my.cnf
     rm -f /var/lib/mysql/ib*
     cd /var/lib/mysql/mysql
-    rm -f innodb_* slave_*
+    rm -f /var/lib/mysq/mysql/innodb_* 
+    rm -f /var/lib/mysq/mysql/slave_*
     /etc/init.d/mysql start
     mysql -u $MYSQL_MASTER_USER --password=$MYSQL_MASTER_PASSWORD mysql < /git-mysql/fixStatTables.sql
 fi
@@ -14,7 +15,8 @@ if [ $MYSQL_SLAVE ];
    cp /git-mysql/mysql-master.cnf /etc/mysql/my.cnf
    rm -f /var/lib/mysql/ib*
    cd /var/lib/mysql/mysql
-   rm -f innodb_* slave_*
+    rm -f /var/lib/mysq/mysql/innodb_* 
+    rm -f /var/lib/mysq/mysql/slave_*
    /etc/init.d/mysql start
    mysql -u $MYSQL_MASTER_USER --password=$MYSQL_MASTER_PASSWORD mysql < /git-mysql/fixStatTables.sql
 fi
