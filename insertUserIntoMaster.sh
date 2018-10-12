@@ -1,0 +1,1 @@
+mysql -u $MYSQL_MASTER_USER -p $MYSqL_MASTER_PASS -h $MYSQL_MASTER_HOST -e "GRANT REPLICATION SLAVE ON *.* TO 'repl'@'$MYSQL_SLAVE_HOST' identified by 'repl'"
