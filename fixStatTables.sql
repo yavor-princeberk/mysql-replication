@@ -1,8 +1,4 @@
-drop table `innodb_index_stats`;
-drop table `innodb_table_stats`;
-drop table `slave_master_info`;
-drop table `slave_relay_log_info`;
-drop table `slave_worker_info`;
+
 CREATE TABLE `innodb_index_stats` (
   `database_name` varchar(64) COLLATE utf8_bin NOT NULL,
   `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
