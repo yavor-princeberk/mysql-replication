@@ -12,8 +12,7 @@ fi
 if [ $MYSQL_SLAVE ];
   then
    cp /git-mysql/mysql-slave.cnf /etc/mysql/my.cnf
-   cat /etc/mysql/my.cnf | grep 'server-id' | sed -E -e "s/[0-9]$/${MYSQL_SLAVE}/g" > /etc/mysql/my1.cnf
-   mv /etc/mysql/my1.cnf /etc/mysql/my.cnf
+   sed -ie "s/[0-9]$/$MYSQL_SLAVE/g" mysql-slave.cnf   mv /etc/mysql/my1.cnf /etc/mysql/my.cnf
    rm -f /var/lib/mysql/ib*
     rm -f /var/lib/mysql/mysql/innodb_* 
     rm -f /var/lib/mysql/mysql/slave_*
