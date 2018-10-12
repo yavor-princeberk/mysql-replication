@@ -11,7 +11,7 @@ if [ $MYSQL_MASTER ];
 fi
 if [ $MYSQL_SLAVE ];
   then
-   cp /git-mysql/mysql-master.cnf /etc/mysql/my.cnf
+   cp /git-mysql/mysql-slave.cnf /etc/mysql/my.cnf
    rm -f /var/lib/mysql/ib*
     rm -f /var/lib/mysql/mysql/innodb_* 
     rm -f /var/lib/mysql/mysql/slave_*
