@@ -1,0 +1,12 @@
+#!/bin/bash 
+export MYSQL_MASTER_HOST="172.18.0.2"
+export MYSQL_MASTER_USER="root"
+export MYSQL_MASTER_PASSWORD="1234qwer"
+export MYSQL_SLAVE_HOST="172.18.0.3"
+export MYSQL_SLAVE_REPL_USER="repl"
+export MYSQL_SLAVE_REPL_PASSWORD="repl"
+export MYSQL_SLAVE_USER="root"
+export MYSQL_SLAVE_PASSWORD="1234qwer" 
+export MYSQL_MASTER_LOG_FILE="mysql-bin.000008"
+export MYSQL_MASTER_LOG_POSITION="120"
+ 
