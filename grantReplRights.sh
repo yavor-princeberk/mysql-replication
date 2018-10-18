@@ -1,2 +1,3 @@
 #!/bin/bash
-mysql -u $MYSQL_USER --password=$MYSQL_PASSWORD -e "grant replication on *.* to '${REPL_USER}'@'${REPL_HOST}' identified by 'repl'
+mysql -u $MYSQL_MASTER_USER --password=$MYSQL_MASTER_PASSWORD -e "grant replication on *.* 
+  to \'${MYSQL_SLAVE_REPL_USER}\'@\'${MYSQL_SLAVE_HOST}\' identified by \'${MYSQL_SLAVE_REPL_PASSWORD}\';"
