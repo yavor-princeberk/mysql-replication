@@ -17,7 +17,7 @@ rm -f /var/lib/mysql/mysql/innodb_index_stats.*
 rm -f /var/lib/mysql/mysql/slave_worker_info.*
 rm -f /var/lib/mysql/mysql/slave_relay_log_info.*
 rm -f /var/lib/mysql/mysql/slave_master_info.*
+
 /etc/init.d/mysql start
 mysql -u $MYSQL_ROOT_USER --password=$MYSQL_ROOT_PASSWORD mysql -f < /git-mysql/fixStatTables.sql;
 /etc/init.d/mysql restart
-
