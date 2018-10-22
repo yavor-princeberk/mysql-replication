@@ -1,9 +1,6 @@
 #!/bin/bash
 #Fix mysql system tables to work with replication
 
-rm -f /var/lib/mysql/mysql/innodb_*
-rm -f /var/lib/mysql/mysql/slave_*
-
 mysql -u $MYSQL_ROOT_USER --password=$MYSQL_ROOT_PASSWORD mysql -e "drop table innodb_table_stats";
 mysql -u $MYSQL_ROOT_USER --password=$MYSQL_ROOT_PASSWORD mysql -e "drop table innodb_index_stats";
 mysql -u $MYSQL_ROOT_USER --password=$MYSQL_ROOT_PASSWORD mysql -e "drop table slave_worker_info";
@@ -14,8 +11,13 @@ mysql -u $MYSQL_ROOT_USER --password=$MYSQL_ROOT_PASSWORD mysql -e "alter table 
 mysql -u $MYSQL_ROOT_USER --password=$MYSQL_ROOT_PASSWORD mysql -e "alter table slave_worker_info discard tablespace";
 mysql -u $MYSQL_ROOT_USER --password=$MYSQL_ROOT_PASSWORD mysql -e "alter table slave_relay_log_info discard tablespace";
 mysql -u $MYSQL_ROOT_USER --password=$MYSQL_ROOT_PASSWORD mysql -e "alter table slave_master_info discard tablespace";
-
-
-/etc/init.d/mysql restart
+/etc/init.d/mysql stop
+rm -f /var/lib/mysql/mysql/innodb_table_stats.*
+rm -f /var/lib/mysql/mysql/innodb_index_stats.*
+rm -f /var/lib/mysql/mysql/slave_worker_info.*
+rm -f /var/lib/mysql/mysql/slave_relay_log_info.*
+rm -f /var/lib/mysql/mysql/slave_master_info.*
+/etc/init.d/mysql start
 mysql -u $MYSQL_ROOT_USER --password=$MYSQL_ROOT_PASSWORD mysql -f < /git-mysql/fixStatTables.sql;
-/etc/init.d/mysql restart 
+/etc/init.d/mysql restart
+
